@@ -29,7 +29,7 @@ const reqFunctions = outcodeReqs
         }
     });
 
-parallelLimit(reqFunctions, 1, function done(err, res) {
+parallelLimit(reqFunctions, 5, function done(err, res) {
     if (err) console.error(err);
     res = res
         .filter(data => data);
