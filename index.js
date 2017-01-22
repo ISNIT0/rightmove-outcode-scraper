@@ -6,7 +6,7 @@ const fs = require('fs');
 const outcodeReqs = [...Array(2950)]
     .map((_, code) => {
         return `http://api.rightmove.co.uk/api/sale/find?index=0&sortType=2&numberOfPropertiesRequested=1&locationIdentifier=OUTCODE%5E${code + 1}&apiApplication=IPAD`
-    }).slice(0, 2);
+    });
 
 const reqFunctions = outcodeReqs
     .map((req, index) => {
