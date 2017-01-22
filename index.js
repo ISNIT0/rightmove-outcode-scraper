@@ -13,14 +13,17 @@ const reqFunctions = outcodeReqs
         return function (handler) {
             console.log(`Got area ${index + 1}`);
             request(req, function (err, res, body) {
+                console.error('Something went wrong on area ' + index + 1);
                 if (err) return handler(null, { error: err });
                 let data;
                 try {
                     data = JSON.parse(body);
                 } catch (e) {
+                    console.error('Something went wrong on area ' + index + 1);
                     return handler(null, { error: e });
                 }
                 if (data.result !== 'SUCCESS') {
+                    console.error('Something went wrong on area ' + index + 1);
                     return handler(null, { error: data });
                 } else {
                     return handler(null, data);
@@ -29,7 +32,7 @@ const reqFunctions = outcodeReqs
         }
     });
 
-parallelLimit(reqFunctions, 5, function done(err, res) {
+parallelLimit(reqFunctions, 2, function done(err, res) {
     if (err) console.error(err, res.filter(data => data.error));
     res = res
         .filter(data => data)
