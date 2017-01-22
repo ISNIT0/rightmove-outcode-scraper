@@ -33,7 +33,7 @@ const reqFunctions = outcodeReqs
     });
 
 parallelLimit(reqFunctions, 2, function done(err, res) {
-    if (err) console.error(err, res.filter(data => data.error));
+    console.error(err, res.filter(data => data.error));
     res = res
         .filter(data => data)
         .filter(data => !data.error);
