@@ -13,17 +13,17 @@ const reqFunctions = outcodeReqs
         return function (handler) {
             console.log(`Got area ${index + 1}`);
             request(req, function (err, res, body) {
-                console.error('Something went wrong on area ' + index + 1);
+                console.error('Something went wrong on area ' + (index + 1));
                 if (err) return handler(null, { error: err });
                 let data;
                 try {
                     data = JSON.parse(body);
                 } catch (e) {
-                    console.error('Something went wrong on area ' + index + 1);
+                    console.error('Something went wrong on area ' + (index + 1));
                     return handler(null, { error: e });
                 }
                 if (data.result !== 'SUCCESS') {
-                    console.error('Something went wrong on area ' + index + 1);
+                    console.error('Something went wrong on area ' + (index + 1));
                     return handler(null, { error: data });
                 } else {
                     return handler(null, data);
